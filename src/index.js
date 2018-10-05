@@ -34,7 +34,9 @@ module.exports = {
 		if (!e.fRecurrence) {
 			e.EventDate = new Date(this.parseDate(e.EventDate, e.fAllDayEvent));
 			e.EndDate = new Date(this.parseDate(e.EndDate, e.fAllDayEvent));
-			return [e];
+            return (start && end)
+                ? (new Date(start) <= e.EventDate && new Date(end) >= e.EndDate) ? [e] : []
+                : [e];
 		} else {
 			start = start || this.parseDate(e.EventDate, e.fAllDayEvent);
 			end = end || this.parseDate(e.EndDate, e.fAllDayEvent);
@@ -42,7 +44,11 @@ module.exports = {
 			const wd = ['su', 'mo', 'tu', 'we', 'th', 'fr', 'sa'];
 			const wom = ['first', 'second', 'third', 'fourth'];
 			let rTotal = 0;
-			let total = 0;
+            let total = 0;
+            let [_, windowEnd] = /<windowEnd>(.+)<\/windowEnd>/.exec(e.RecurrenceData) || [];
+            if (windowEnd && (new Date(windowEnd) <= new Date())) {
+                return [];
+            }
 			if (e.RecurrenceData.includes('<repeatInstances>')) {
 				rTotal = e.RecurrenceData.substring(e.RecurrenceData.indexOf('<repeatInstances>') + 17);
 				rTotal = parseInt(rTotal.substring(0, rTotal.indexOf('<')));
