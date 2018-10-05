@@ -1,0 +1,22 @@
+{
+  "name": "sharepoint-events-parser",
+  "version": "0.0.1",
+  "description": "A way to parse SharePoint Calendar Event RecurrenceData into individual event objects with javascript",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpelekh/sharepoint-events-parser.git"
+  },
+  "keywords": [
+    "sharepoint"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpelekh/sharepoint-events-parser/issues"
+  },
+  "homepage": "https://github.com/mpelekh/sharepoint-events-parser#readme"
+}
