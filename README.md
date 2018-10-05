@@ -25,13 +25,13 @@ There are two basic ways to call the parser - on a single event, or on an array 
 #### Parse Single Event
 
 ```
-var parsedArray = spEventsParser.parseEvent(eventObject);
+const parsedArray = spEventsParser.parseEvent(eventObject);
 ```
 
 #### Parse Array of Events
 
 ```
-var parsedArray = spEventsParser.parseEvents(eventArray);
+const parsedArray = spEventsParser.parseEvents(eventArray);
 ```
 
 #### Optionally, specify a date range for the recurring events
@@ -39,9 +39,9 @@ var parsedArray = spEventsParser.parseEvents(eventArray);
 A recurring event may have been created several years ago, but maybe you only care to return data within the past year. Likewise, if an event recurs indefinitely, you may only care to return the recurrence up to one year in the future. You can specify these boundaries by passing a start and end date into the events parser:
 
 ```
-var dt = new Date();
-var startDate = new Date(dt.getFullYear(), dt.getMonth() - 1, 25); //start from the 25th of last month
-var endDate = new Date(dt.getFullYear(), dt.getMonth() + 1, 5); //end at the fifth of next month
+const dt = new Date();
+const startDate = new Date(dt.getFullYear(), dt.getMonth() - 1, 25); //start from the 25th of last month
+const endDate = new Date(dt.getFullYear(), dt.getMonth() + 1, 5); //end at the fifth of next month
  
-var parsedArray = spEventsParser.parseEvent(eventObject,startDate,endDate);
+const parsedArray = spEventsParser.parseEvent(eventObject, startDate, endDate);
 ```
